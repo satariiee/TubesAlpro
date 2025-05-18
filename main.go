@@ -7,10 +7,8 @@ import (
 const NMAX int = 1000
 
 type sampah struct {
-	jenis           string
-	jumlah          int
-	daurUlang       bool
-	metodeDaurUlang string
+	jenis  string
+	jumlah int
 }
 
 type dataSampah [NMAX]sampah
@@ -21,8 +19,8 @@ func main() {
 	fmt.Println("1. Tambah Data Sampah")
 	fmt.Println("2. Ubah Data Sampah")
 	fmt.Println("3. Hapus Data Sampah")
-	fmt.Println("4. Cari Sampah")
-	fmt.Println("5. Urutkan Sampah")
+	fmt.Println("4. Cari Data Sampah")
+	fmt.Println("5. Urutkan Data Sampah")
 	fmt.Println("6. Tampilkan Statistik")
 	fmt.Println("0. Keluar")
 
@@ -36,5 +34,25 @@ func main() {
 }
 
 func tambahData(A *dataSampah) {
-	fmt.Scan(A)
+	var i, idx int
+	var found bool = false
+	for i = 0; i < NMAX && !found; i++ {
+		if A[i].jenis == "" {
+			index = i
+			found = true
+		}
+	}
+
+	if found {
+		fmt.Print("Masukan jenis sampah: ")
+		fmt.Scan(&A[idx].jenis)
+		fmt.Print("Masukan jumlah sampah: ")
+		fmt.Scan(&A[idx].jumlah)
+		fmt.Print("Masukan berat sampah: ")
+		fmt.Scan(&A[idx].berat)
+		fmt.Println("Data sampah berhasil ditambahkan.")
+	} else {
+		fmt.Println("Kapasitas penyimpanan data sampah penuh.")
+	}
+
 }
